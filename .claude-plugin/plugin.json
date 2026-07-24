@@ -1,0 +1,9 @@
+{
+  "name": "netcdf-toolkit",
+  "description": "GIS skill for netcdf-toolkit",
+  "version": "0.1.0",
+  "author": "ruiduobao",
+  "skills": [
+    "netcdf-toolkit"
+  ]
+}
