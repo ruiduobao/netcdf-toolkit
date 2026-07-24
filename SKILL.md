@@ -1,14 +1,11 @@
 ---
-name: netcdf-toolkit
-display_name: NetCDF 数据工具包
-version: 0.1.0
-author: ruiduobao
-license: MIT-0
-description: |
-  Convert NetCDF/HDF files to GeoTIFF, extract variables, subset by time and spatial
+description: 'Convert NetCDF/HDF files to GeoTIFF, extract variables, subset by time
+  and spatial
+
   bbox, and inspect file metadata. All processing is local — no data is uploaded.
-runtime: python>=3.8
-tags: [gis, netcdf, hdf, conversion, remote-sensing, cli]
+
+  '
+name: netcdf-toolkit
 ---
 
 # NetCDF Toolkit
@@ -34,16 +31,16 @@ pip install netCDF4 rasterio numpy
 
 ```bash
 # Show file info
-python scripts/netcdf-toolkit.py info --input data.nc
+python scripts\netcdf-toolkit.py info --input data.nc
 
 # Convert a variable to GeoTIFF
-python scripts/netcdf-toolkit.py convert --input data.nc --variable temperature --output temp.tif
+python scripts\netcdf-toolkit.py convert --input data.nc --variable temperature --output temp.tif
 
 # Extract variables
-python scripts/netcdf-toolkit.py extract --input data.nc --variables temp,pressure --output subset.nc
+python scripts\netcdf-toolkit.py extract --input data.nc --variables temp,pressure --output subset.nc
 
 # Subset spatially and temporally
-python scripts/netcdf-toolkit.py subset --input data.nc --variable temp --bbox 73,18,135,54 --output subset.tif
+python scripts\netcdf-toolkit.py subset --input data.nc --variable temp --bbox 73,18,135,54 --output subset.tif
 ```
 
 ## Installation
@@ -99,7 +96,7 @@ Loop over multiple files with a shell script:
 ```bash
 # Convert all NetCDF files in a directory
 for f in data/*.nc; do
-  python scripts/netcdf-toolkit.py convert \
+  python scripts\netcdf-toolkit.py convert \
     --input "$f" \
     --variable temperature \
     --output "output/$(basename "$f" .nc).tif"
@@ -198,7 +195,7 @@ If you use this tool in your research, please cite the input data source (e.g., 
 ```bash
 # Convert all NetCDF files in a directory to GeoTIFF
 for f in data/*.nc; do
-  python scripts/netcdf_toolkit.py convert     --input "$f" --variable Band1 --output "${f%.nc}.tif"
+  python scripts\netcdf-toolkit.py convert     --input "$f" --variable Band1 --output "${f%.nc}.tif"
 done
 ```
 
@@ -220,14 +217,14 @@ jobs:
       - run: pip install numpy h5netcdf rasterio
       - run: |
           for f in data/*.nc; do
-            python scripts/netcdf_toolkit.py convert \
+            python scripts\netcdf-toolkit.py convert \
               --input "$f" --variable Band1 --output "${f%.nc}.tif"
           done
 ```
 
 ### PostgreSQL/PostGIS Raster Import
 ```bash
-python scripts/netcdf_toolkit.py convert   --input temperature.nc --variable t2m --output t2m.tif
+python scripts\netcdf-toolkit.py convert   --input temperature.nc --variable t2m --output t2m.tif
 
 raster2pgsql -s 4326 -I -C t2m.tif public.t2m_raster | psql -d gis_db
 ```
@@ -235,7 +232,7 @@ raster2pgsql -s 4326 -I -C t2m.tif public.t2m_raster | psql -d gis_db
 ### Performance Tips
 - Use `--subset` with `--bbox` to extract only the area of interest (reduces memory)
 - For large files, use `--sequential` mode to limit memory usage
-- HDF4 files require `h5netcdf` engine; check availability with `python scripts/netcdf_toolkit.py info --input file.hdf`
+- HDF4 files require `h5netcdf` engine; check availability with `python scripts\netcdf-toolkit.py info --input file.hdf`
 
 ---
 
@@ -261,16 +258,16 @@ pip install netCDF4 rasterio numpy
 
 ```bash
 # 查看文件信息
-python scripts/netcdf-toolkit.py info --input data.nc
+python scripts\netcdf-toolkit.py info --input data.nc
 
 # 转换变量为 GeoTIFF
-python scripts/netcdf-toolkit.py convert --input data.nc --variable temperature --output temp.tif
+python scripts\netcdf-toolkit.py convert --input data.nc --variable temperature --output temp.tif
 
 # 提取变量
-python scripts/netcdf-toolkit.py extract --input data.nc --variables temp,pressure --output subset.nc
+python scripts\netcdf-toolkit.py extract --input data.nc --variables temp,pressure --output subset.nc
 
 # 空间和时间子集
-python scripts/netcdf-toolkit.py subset --input data.nc --variable temp --bbox 73,18,135,54 --output subset.tif
+python scripts\netcdf-toolkit.py subset --input data.nc --variable temp --bbox 73,18,135,54 --output subset.tif
 ```
 
 ### 数据来源
@@ -286,7 +283,7 @@ python scripts/netcdf-toolkit.py subset --input data.nc --variable temp --bbox 7
 ```bash
 # 转换目录中所有 NetCDF 文件
 for f in data/*.nc; do
-  python scripts/netcdf-toolkit.py convert \
+  python scripts\netcdf-toolkit.py convert \
     --input "$f" \
     --variable temperature \
     --output "output/$(basename "$f" .nc).tif"

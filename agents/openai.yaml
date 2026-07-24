@@ -1,0 +1,4 @@
+description: Convert NetCDF/HDF files to GeoTIFF, extract variables, subset by time
+  and spatial
+display_name: Netcdf Toolkit
+name: netcdf-toolkit
