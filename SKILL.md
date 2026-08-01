@@ -1,6 +1,6 @@
 ---
 name: netcdf-toolkit
-description: 'Convert NetCDF/HDF files to GeoTIFF, extract variables, subset by time description: 'Convert NetCDF/HDF files to GeoTIFF, extract variables, subset by time and spatial  bbox, and inspect file metadata. All processing is local — no data is uploaded.  '
+description: 'Convert NetCDF/HDF files to GeoTIFF, extract variables, subset by time and spatial  bbox, and inspect file metadata. All processing is local — no data is uploaded.  '
 ---
 
 # NetCDF Toolkit
